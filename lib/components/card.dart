@@ -5,9 +5,10 @@ class Card extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
-      height: 200,
-      width: 200,
+      height: size.height * 0.7,
+      width: size.width * 0.7,
       color: Colors.black,
     );
   }
