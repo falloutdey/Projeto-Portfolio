@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-// import 'package:url_strategy/url_strategy.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:go_router/go_router.dart';
 import 'package:projeto_portfolio/sections/about.dart';
 import 'package:projeto_portfolio/sections/academic_info.dart';
 import 'package:projeto_portfolio/sections/contacts.dart';
+import 'package:projeto_portfolio/sections/home.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
 import 'package:projeto_portfolio/sections/projects.dart';
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(const MainApp());
 }
 
@@ -15,22 +18,31 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    final router = GoRouter(initialLocation: '/', routes: [
+      GoRoute(
+          path: '/',
+          pageBuilder: (context, state) =>
+              const MaterialPage(child: HomePage()))
+    ]);
+
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-      body: 
-        SingleChildScrollView(
-          child: Column(
-            children: [
-              About(),
-              AcademicInfo(),
-              Knowledges(),
-              Projects(),
-              Contacts()
-            ],
-          ),
-        )
-      ),
+      routeInformationParser: router.routeInformationParser,
+      routeInformationProvider: router.routeInformationProvider,
+      routerDelegate: router.routerDelegate,
     );
   }
 }
+
+
+// SingleChildScrollView(
+//         child: Column(
+//           children: [
+//             About(),
+//             AcademicInfo(),
+//             Knowledges(),
+//             Projects(),
+//             Contacts()
+//           ],
+//         ),
+//       )
