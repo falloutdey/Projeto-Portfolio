@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_wev_plugins:
+    sdk: flutter
+  
+  go_router: ^10.1.0
 
 dev_dependencies:
   flutter_test:
