@@ -5,6 +5,7 @@ import 'package:projeto_portfolio/sections/about.dart';
 import 'package:projeto_portfolio/sections/academic_info.dart';
 import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/home.dart';
+import 'package:projeto_portfolio/sections/intro.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
 import 'package:projeto_portfolio/sections/projects.dart';
 
@@ -22,7 +23,7 @@ class MainApp extends StatelessWidget {
       GoRoute(
           path: '/',
           pageBuilder: (context, state) =>
-              const MaterialPage(child: HomePage()))
+              const MaterialPage(child: Intro()))
     ]);
 
     return MaterialApp.router(
