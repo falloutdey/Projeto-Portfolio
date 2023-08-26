@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+    
   go_router: ^10.1.0
   url_strategy: ^0.2.0
 
@@ -21,6 +22,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Comfortaa
+      fonts:
+        - asset: lib\assets\fonts\Comfortaa-VariableFont_wght.ttf
   
   assets:
     - lib\assets\images\textura_triangular.jpg
+    - lib\assets\fonts\Comfortaa-VariableFont_wght.ttf

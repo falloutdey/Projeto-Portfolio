@@ -5,7 +5,6 @@ import 'package:projeto_portfolio/sections/about.dart';
 import 'package:projeto_portfolio/sections/academic_info.dart';
 import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/home.dart';
-import 'package:projeto_portfolio/sections/intro.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
 import 'package:projeto_portfolio/sections/projects.dart';
 
@@ -22,8 +21,11 @@ class MainApp extends StatelessWidget {
     final router = GoRouter(initialLocation: '/', routes: [
       GoRoute(
           path: '/',
+          pageBuilder: (context, state) => const MaterialPage(child: Intro())),
+      GoRoute(
+          path: '/portfolio',
           pageBuilder: (context, state) =>
-              const MaterialPage(child: Intro()))
+              const MaterialPage(child: HomePage()))
     ]);
 
     return MaterialApp.router(
@@ -35,15 +37,65 @@ class MainApp extends StatelessWidget {
   }
 }
 
+class Intro extends StatefulWidget {
+  const Intro({Key? key}) : super(key: key);
 
-// SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             About(),
-//             AcademicInfo(),
-//             Knowledges(),
-//             Projects(),
-//             Contacts()
-//           ],
-//         ),
-//       )
+  @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> {
+  bool mousePassado = false;
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Container(
+        height: size.height,
+        width: size.width,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            opacity: 0.7,
+            image: AssetImage('lib/assets/images/textura_triangular.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Container(
+            constraints: BoxConstraints(maxHeight: size.height * 0.4),
+            // Set a maximum height for the column
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "Olá, eu sou Deydson Costa",
+                  style: TextStyle(fontSize: 43, fontWeight: FontWeight.bold, fontFamily: 'Comfortaa'),
+                ),
+                Text(
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                ),
+                TextButton(
+                  onHover: (value) => setState(() {
+                    mousePassado = value;
+                  }),
+                  onPressed: () {
+                    GoRouter.of(context).push('/portfolio');
+                  },
+                  child: Text(
+                    "Vamos começar",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all(Size(160, 50)),
+                    backgroundColor: MaterialStateProperty.all(
+                        mousePassado ? Colors.purple : Colors.black),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
