@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_portfolio/sections/about.dart';
 import 'package:projeto_portfolio/sections/academic_info.dart';
+import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
+import 'package:projeto_portfolio/sections/projects.dart';
+import 'package:projeto_portfolio/components/menuItem.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey keyAbout = GlobalKey();
-    GlobalKey keyAcademicInfo = GlobalKey();
-    GlobalKey keyKnowledges = GlobalKey();
-    GlobalKey keyProjects = GlobalKey();
-    GlobalKey keyContacts = GlobalKey();
+     GlobalKey keyAbout = GlobalKey();
+     GlobalKey keyAcademicInfo = GlobalKey();
+     GlobalKey keyKnowledges = GlobalKey();
+     GlobalKey keyProjects = GlobalKey();
+     GlobalKey keyContacts = GlobalKey();
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -21,56 +24,56 @@ class HomePage extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Container(
-              width: size.width * 0.6,
+              width: size.width * 0.8,
               height: size.height * 0.8,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
-                color: Colors.black
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  IconButton(
-                    onPressed: () {
+                  TextButton(onPressed: () {
 
-                    },
-                    icon: Icon(),
-                  ),
-                  IconButton(
-                    onPressed: () {
+                  }, child: Row(
+                    children: [
+                      Icon(),
+                      Text()
+                    ],
+                  )),
+                  TextButton(onPressed: () {
 
-                    },
-                    icon: Icon(),
-                  ),
-                  IconButton(
-                    onPressed: () {
+                  }, child: Row(
+                        children: [Icon(), Text()],
+                      )),
+                  TextButton(onPressed: () {
 
-                    },
-                    icon: Icon(),
-                  ),
-                  IconButton(
-                    onPressed: () {
+                  }, child: Row(
+                        children: [Icon(), Text()],
+                      )),
+                  TextButton(onPressed: () {
 
-                    },
-                    icon: Icon(),
-                  ),
-                  IconButton(
-                    onPressed: () {
+                  }, child: Row(
+                        children: [Icon(), Text()],
+                      )),
+                  TextButton(onPressed: () {
 
-                    },
-                    icon: Icon(),
-                  )
+                  }, child: Row(
+                        children: [Icon(), Text()],
+                      ))
                 ],
               ),
             ),
           ),
-          const Expanded(
-            flex: 4,
+           Expanded(
+            flex: 5,
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  About(),
-                  AcademicInfo(),
-                  Knowledges(),
+                  About(key: keyAbout),
+                  AcademicInfo(key: keyAcademicInfo),
+                  Knowledges(key: keyKnowledges),
+                  Projects(key: keyProjects),
+                  Contacts(key: keyContacts),
                 ],
               ),
             ),
