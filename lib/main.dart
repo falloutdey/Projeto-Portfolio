@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
       GoRoute(
           path: '/portfolio',
           pageBuilder: (context, state) =>
-              const MaterialPage(child: HomePage()))
+              MaterialPage(child: HomePage()))
     ]);
 
     return MaterialApp.router(
