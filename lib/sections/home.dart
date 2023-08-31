@@ -4,7 +4,6 @@ import 'package:projeto_portfolio/sections/academic_info.dart';
 import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
 import 'package:projeto_portfolio/sections/projects.dart';
-import 'package:projeto_portfolio/components/menuItem.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -61,67 +60,119 @@ class _MenuState extends State<Menu> {
     Size size = MediaQuery.of(context).size;
     return Expanded(
       flex: 1,
-      child: Container(
-        width: size.width * 0.8,
-        height: size.height * 0.8,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Colors.black
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ToggleButtons(
-              isSelected: categoriaSelecionada,
-              onPressed: (int index) {
-                setState(() {
-                  for (int buttonIndex = 0;
-                      buttonIndex < categoriaSelecionada.length;
-                      buttonIndex++) {
-                    categoriaSelecionada[buttonIndex] = buttonIndex == index;
-                  }
-                });
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        ToggleButtons(
+          isSelected: categoriaSelecionada,
+          onPressed: (int index) {
+            setState(() {
+              for (int buttonIndex = 0;
+                  buttonIndex < categoriaSelecionada.length;
+                  buttonIndex++) {
+                categoriaSelecionada[buttonIndex] = buttonIndex == index;
+              }
+            });
 
-                // Seção para a rolagem para os elementos correspondentes
-                Scrollable.ensureVisible(
-                  widget.keys[index].currentContext!,
-                  duration: const Duration(milliseconds: 600),
-                );
-              },
-              selectedColor: Colors.purple[300], // Cor para botões selecionados
-              fillColor:
-                  Colors.purple[300], // Cor de preenchimento quando pressionado
-              color: Colors.grey, // Cor para botões não selecionados
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(children: [Icon(Icons.account_circle), Text("Sobre")]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(children: [
-                    Icon(Icons.school),
-                    Text("Informações Acadêmicas")
-                  ]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(children: [
-                    Icon(Icons.menu_book),
-                    Text("Conhecimentos e Habilidades")
-                  ]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(children: [Icon(Icons.code), Text("Projetos")]),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(children: [Icon(Icons.phone), Text("Contatos")]),
-                ),
-              ],
+            // Seção para a rolagem para os elementos correspondentes
+            Scrollable.ensureVisible(
+              widget.keys[index].currentContext!,
+              duration: const Duration(milliseconds: 300),
+            );
+          },
+          borderColor: Colors.black,
+          selectedBorderColor: Colors.purple,
+          selectedColor: Colors.purple[300], // Cor para botões selecionados
+          fillColor:
+              Colors.purple[300], // Cor de preenchimento quando pressionado
+          color: Colors.black, // Cor para botões não selecionados
+          borderRadius: BorderRadius.circular(20),
+
+          children: [
+            Container(
+              width: 120,
+              height: 70,
+              alignment: AlignmentDirectional.center,
+              child: Padding(    
+                padding: const EdgeInsets.all(8.0),
+                child:
+                    Column(
+                      children: [
+                        Icon(Icons.account_circle, 
+                        color: categoriaSelecionada[0]? Colors.white : Colors.black),
+                        SizedBox(height: 10),
+                        Text("Sobre", style: TextStyle(
+                          color: categoriaSelecionada[0] 
+                          ? Colors.white 
+                          : Colors.black))
+                    ]),
+              ),
             ),
+            Container(
+              width: 220,
+              height: 70,
+              alignment: AlignmentDirectional.center,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(children: [
+                  Icon(Icons.school,  color:
+                          categoriaSelecionada[1] ? Colors.white : Colors.black),
+                          SizedBox(height: 10),
+                  Text("Informações Acadêmicas", style: TextStyle(
+                          color: categoriaSelecionada[1] 
+                          ? Colors.white 
+                          : Colors.black))
+                ]),
+              ),
+            ),
+            Container(
+              width: 220,
+              height: 70,
+              alignment: AlignmentDirectional.center,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(children: [
+                  Icon(Icons.menu_book,  color:
+                          categoriaSelecionada[2] ? Colors.white : Colors.black),
+                          SizedBox(height: 10),
+                  Text("Conhecimentos e Habilidades", style: TextStyle(
+                          color: categoriaSelecionada[2]
+                              ? Colors.white
+                              : Colors.black))
+                ]),
+              ),
+            ),
+            Container(
+              width: 120,
+              height: 70,
+              alignment: AlignmentDirectional.center,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(children: [Icon(Icons.code,  color:
+                          categoriaSelecionada[3] ? Colors.white : Colors.black), 
+                          SizedBox(height: 10),
+                          Text("Projetos", style: TextStyle(
+                          color: categoriaSelecionada[3]
+                              ? Colors.white
+                              : Colors.black))]),
+              ),
+            ),
+            Container(
+              width: 120,
+              height: 70,
+              alignment: AlignmentDirectional.center,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(children: [Icon(Icons.phone,  color:
+                          categoriaSelecionada[4] ? Colors.white : Colors.black), 
+                          SizedBox(height: 10),
+                          Text("Contatos", style: TextStyle(
+                          color: categoriaSelecionada[4]
+                              ? Colors.white
+                              : Colors.black))]),
+              ),
+            ),
+          ],
+        ),
       ]),
-    ));
+    );
   }
 }
