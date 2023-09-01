@@ -57,7 +57,6 @@ class _MenuState extends State<Menu> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Expanded(
       flex: 1,
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
