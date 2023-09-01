@@ -24,15 +24,19 @@ class HomePage extends StatelessWidget {
           Menu(keys: keys),
           Expanded(
             flex: 5,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  About(key: keys[0]),
-                  AcademicInfo(key: keys[1]),
-                  Knowledges(key: keys[2]),
-                  Projects(key: keys[3]),
-                  Contacts(key: keys[4]),
-                ],
+            child: ScrollConfiguration(
+              behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: SingleChildScrollView(
+                physics: NeverScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    About(key: keys[0]),
+                    AcademicInfo(key: keys[1]),
+                    Knowledges(key: keys[2]),
+                    Projects(key: keys[3]),
+                    Contacts(key: keys[4]),
+                  ],
+                ),
               ),
             ),
           ),
