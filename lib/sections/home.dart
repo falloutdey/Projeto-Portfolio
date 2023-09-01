@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_portfolio/sections/about.dart';
-import 'package:projeto_portfolio/sections/academic_info.dart';
 import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
-import 'package:projeto_portfolio/sections/projects.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -14,11 +12,10 @@ class HomePage extends StatelessWidget {
       GlobalKey(),
       GlobalKey(),
       GlobalKey(),
-      GlobalKey(),
-      GlobalKey(),
     ];
 
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: Column(
         children: [
           Menu(keys: keys),
@@ -31,10 +28,8 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     About(key: keys[0]),
-                    AcademicInfo(key: keys[1]),
-                    Knowledges(key: keys[2]),
-                    Projects(key: keys[3]),
-                    Contacts(key: keys[4]),
+                    Knowledges(key: keys[1]),
+                    Contacts(key: keys[2]),
                   ],
                 ),
               ),
@@ -56,7 +51,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  List<bool> categoriaSelecionada = <bool>[true, false, false, false, false];
+  List<bool> categoriaSelecionada = <bool>[true, false, false];
   bool ehSelecionado = false;
 
   @override
@@ -78,20 +73,18 @@ class _MenuState extends State<Menu> {
             // Seção para a rolagem para os elementos correspondentes
             Scrollable.ensureVisible(
               widget.keys[index].currentContext!,
-              duration: const Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 100),
             );
           },
           borderColor: Colors.black,
           selectedBorderColor: Colors.purple,
-          selectedColor: Colors.purple[300], // Cor para botões selecionados
-          fillColor:
-              Colors.purple[300], // Cor de preenchimento quando pressionado
-          color: Colors.black, // Cor para botões não selecionados
+          selectedColor: Colors.purple[900],
+          fillColor: Colors.purple[900], 
           borderRadius: BorderRadius.circular(20),
 
           children: [
             Container(
-              width: 120,
+              width: 100,
               height: 70,
               alignment: AlignmentDirectional.center,
               child: Padding(    
@@ -102,7 +95,7 @@ class _MenuState extends State<Menu> {
                         Icon(Icons.account_circle, 
                         color: categoriaSelecionada[0]? Colors.white : Colors.black),
                         SizedBox(height: 10),
-                        Text("Sobre", style: TextStyle(
+                        Text("Sobre Mim", style: TextStyle(
                           color: categoriaSelecionada[0] 
                           ? Colors.white 
                           : Colors.black))
@@ -116,28 +109,11 @@ class _MenuState extends State<Menu> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(children: [
-                  Icon(Icons.school,  color:
+                  Icon(Icons.menu_book,  color:
                           categoriaSelecionada[1] ? Colors.white : Colors.black),
                           SizedBox(height: 10),
-                  Text("Informações Acadêmicas", style: TextStyle(
-                          color: categoriaSelecionada[1] 
-                          ? Colors.white 
-                          : Colors.black))
-                ]),
-              ),
-            ),
-            Container(
-              width: 220,
-              height: 70,
-              alignment: AlignmentDirectional.center,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(children: [
-                  Icon(Icons.menu_book,  color:
-                          categoriaSelecionada[2] ? Colors.white : Colors.black),
-                          SizedBox(height: 10),
                   Text("Conhecimentos e Habilidades", style: TextStyle(
-                          color: categoriaSelecionada[2]
+                          color: categoriaSelecionada[1]
                               ? Colors.white
                               : Colors.black))
                 ]),
@@ -149,26 +125,11 @@ class _MenuState extends State<Menu> {
               alignment: AlignmentDirectional.center,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(children: [Icon(Icons.code,  color:
-                          categoriaSelecionada[3] ? Colors.white : Colors.black), 
-                          SizedBox(height: 10),
-                          Text("Projetos", style: TextStyle(
-                          color: categoriaSelecionada[3]
-                              ? Colors.white
-                              : Colors.black))]),
-              ),
-            ),
-            Container(
-              width: 120,
-              height: 70,
-              alignment: AlignmentDirectional.center,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
                 child: Column(children: [Icon(Icons.phone,  color:
-                          categoriaSelecionada[4] ? Colors.white : Colors.black), 
+                          categoriaSelecionada[2] ? Colors.white : Colors.black), 
                           SizedBox(height: 10),
                           Text("Contatos", style: TextStyle(
-                          color: categoriaSelecionada[4]
+                          color: categoriaSelecionada[2]
                               ? Colors.white
                               : Colors.black))]),
               ),

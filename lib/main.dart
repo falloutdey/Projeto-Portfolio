@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
 import 'package:projeto_portfolio/sections/about.dart';
-import 'package:projeto_portfolio/sections/academic_info.dart';
 import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/home.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
-import 'package:projeto_portfolio/sections/projects.dart';
 
 void main() {
   setUrlStrategy(PathUrlStrategy());
@@ -82,13 +80,13 @@ class _IntroState extends State<Intro> {
                     GoRouter.of(context).push('/portfolio');
                   },
                   child: Text(
-                    "Vamos começar",
+                    "Vamos começar!",
                     style: TextStyle(color: Colors.white),
                   ),
                   style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all(Size(160, 50)),
                     backgroundColor: MaterialStateProperty.all(
-                        mousePassado ? Colors.purple : Colors.black),
+                        mousePassado ? Colors.purple[900] : Colors.black),
                   ),
                 ),
               ],
