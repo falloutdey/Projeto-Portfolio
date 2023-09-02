@@ -11,8 +11,9 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
+
   animated_text_kit: ^4.2.1
-    
+  url_launcher: ^6.0.9
   go_router: ^10.1.0
   url_strategy: ^0.2.0
 
@@ -38,4 +39,8 @@ flutter:
   assets:
     - lib\assets\images\textura_triangular.jpg
     - lib\assets\images\imagem.jpg
+    - lib\assets\images\github.png
+    - lib\assets\images\gmail.png
+    - lib\assets\images\linkedin.png
+    - lib\assets\images\x.png
     - lib\assets\fonts\Comfortaa-VariableFont_wght.ttf

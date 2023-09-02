@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_portfolio/sections/about.dart';
-import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/knowlegdes.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,7 +8,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<GlobalKey> keys = [
-      GlobalKey(),
       GlobalKey(),
       GlobalKey(),
     ];
@@ -29,7 +27,6 @@ class HomePage extends StatelessWidget {
                   children: [
                     About(key: keys[0]),
                     Knowledges(key: keys[1]),
-                    Contacts(key: keys[2]),
                   ],
                 ),
               ),
@@ -51,7 +48,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  List<bool> categoriaSelecionada = <bool>[true, false, false];
+  List<bool> categoriaSelecionada = <bool>[true, false];
   bool ehSelecionado = false;
 
   @override
@@ -82,7 +79,7 @@ class _MenuState extends State<Menu> {
 
           children: [
             Container(
-              width: 120,
+              width: 220,
               height: 70,
               alignment: AlignmentDirectional.center,
               child: Padding(    
@@ -115,21 +112,6 @@ class _MenuState extends State<Menu> {
                               ? Colors.white
                               : Colors.black))
                 ]),
-              ),
-            ),
-            Container(
-              width: 120,
-              height: 70,
-              alignment: AlignmentDirectional.center,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(children: [Icon(Icons.phone,  color:
-                          categoriaSelecionada[2] ? Colors.white : Colors.black), 
-                          SizedBox(height: 10),
-                          Text("Contatos", style: TextStyle(
-                          color: categoriaSelecionada[2]
-                              ? Colors.white
-                              : Colors.black))]),
               ),
             ),
           ],

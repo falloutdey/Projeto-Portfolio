@@ -16,7 +16,7 @@ class _ContactsState extends State<Contacts> {
         height: size.height * 0.84,
         width: size.width * 0.9,
         child: Card(
-          color: Colors.grey[400],
+          color: Colors.purple[400],
           shape: RoundedRectangleBorder(
             borderRadius:
                 BorderRadius.circular(20.0),
