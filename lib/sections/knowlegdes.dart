@@ -11,10 +11,31 @@ class Knowledges extends StatelessWidget {
         height: size.height * 0.84,
         width: size.width * 0.9,
         child: Card(
-          // color: Colors.black,
+          color: Colors.grey[400],
           shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(20.0), // Defina o raio desejado aqui
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                  flex: 2,
+                  child:ExpansionTile(
+                      backgroundColor: Colors.grey[300],
+                      title: const Text("Tecnologias"),
+                    ),
+                  ),
+              VerticalDivider(
+                width: 20,
+                color: Colors.black,
+              ),
+              Expanded(
+                flex: 2,
+                child: ExpansionTile(
+                    title: Text("Soft Skills"),
+                  ),
+                ),
+            ],
           ),
         ));
   }

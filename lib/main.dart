@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
 import 'package:projeto_portfolio/sections/home.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+
 
 void main() {
   setUrlStrategy(PathUrlStrategy());
@@ -33,7 +35,7 @@ class MainApp extends StatelessWidget {
 }
 
 class Intro extends StatefulWidget {
-  const Intro({Key? key}) : super(key: key);
+  const Intro({super.key});
 
   @override
   State<Intro> createState() => _IntroState();
@@ -41,6 +43,18 @@ class Intro extends StatefulWidget {
 
 class _IntroState extends State<Intro> {
   bool mousePassado = false;
+  bool showContent = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(milliseconds: 500), () {
+      setState(() {
+        showContent = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -58,39 +72,56 @@ class _IntroState extends State<Intro> {
         child: Center(
           child: Container(
             constraints: BoxConstraints(maxHeight: size.height * 0.4),
-            // Set a maximum height for the column
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Olá, eu sou Deydson Costa",
-                  style: TextStyle(fontSize: 43, fontWeight: FontWeight.bold, fontFamily: 'Comfortaa'),
-                ),
-                Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                ),
-                TextButton(
-                  onHover: (value) => setState(() {
-                    mousePassado = value;
-                  }),
-                  onPressed: () {
-                    GoRouter.of(context).push('/portfolio');
-                  },
-                  child: Text(
-                    "Vamos começar!",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(Size(160, 50)),
-                    backgroundColor: MaterialStateProperty.all(
-                        mousePassado ? Colors.purple[900] : Colors.black),
+                AnimatedOpacity(
+                  opacity: showContent ? 1.0 : 0.0,
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      TyperAnimatedText(
+                        "Olá, eu sou Deydson Costa!",
+                        textStyle: TextStyle(
+                          fontSize: 43,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins',
+                          color: Colors.purple[900],
+                        ),
+                        speed: Duration(milliseconds: 100),
+                      ),
+                    ],
                   ),
                 ),
-              ],
+                      Text(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: TextButton(
+                          onHover: (value) => setState(() {
+                            mousePassado = value;
+                          }),
+                          onPressed: () {
+                            GoRouter.of(context).push('/portfolio');
+                          },
+                          child: Text(
+                            "Vamos começar!",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: ButtonStyle(
+                            fixedSize: MaterialStateProperty.all(Size(160, 50)),
+                            backgroundColor: MaterialStateProperty.all(
+                                mousePassado ? Colors.purple[900] : Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
