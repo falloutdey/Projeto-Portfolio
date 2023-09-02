@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             child: ScrollConfiguration(
               behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
               child: SingleChildScrollView(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 child: Column(
                   children: [
                     About(key: keys[0]),
@@ -69,8 +69,6 @@ class _MenuState extends State<Menu> {
                 categoriaSelecionada[buttonIndex] = buttonIndex == index;
               }
             });
-
-            // Seção para a rolagem para os elementos correspondentes
             Scrollable.ensureVisible(
               widget.keys[index].currentContext!,
               duration: const Duration(milliseconds: 100),
@@ -84,7 +82,7 @@ class _MenuState extends State<Menu> {
 
           children: [
             Container(
-              width: 100,
+              width: 120,
               height: 70,
               alignment: AlignmentDirectional.center,
               child: Padding(    

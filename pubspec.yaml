@@ -30,4 +30,5 @@ flutter:
   
   assets:
     - lib\assets\images\textura_triangular.jpg
+    - lib\assets\images\imagem.jpg
     - lib\assets\fonts\Comfortaa-VariableFont_wght.ttf

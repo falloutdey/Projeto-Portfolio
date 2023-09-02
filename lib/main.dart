@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:go_router/go_router.dart';
-import 'package:projeto_portfolio/sections/about.dart';
-import 'package:projeto_portfolio/sections/contacts.dart';
 import 'package:projeto_portfolio/sections/home.dart';
-import 'package:projeto_portfolio/sections/knowlegdes.dart';
 
 void main() {
   setUrlStrategy(PathUrlStrategy());
